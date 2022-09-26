@@ -78,13 +78,29 @@ if host == "generation":
             init=True,
         )
     )
-    app_keychord.submappings.append(
+    other_groups.insert(
+        -1,
+        Group(
+            name="Thunderbird",
+            exclusive=True,
+            spawn="thunderbird",
+            layout="max",
+            matches=[Match(wm_class="thunderbird")],
+            init=True,
+        )
+    )
+    app_keychord.submappings.extend([
         Key(
             [], "d",
             lazy.group["Discord"].toscreen(),
             desc="Focus Discord group",
         ),
-    )
+        Key(
+            [], "t",
+            lazy.group["Thunderbird"].toscreen(),
+            desc="Focus Thunderbird group",
+        ),
+    ])
 
 group_keys.append(app_keychord)
 
