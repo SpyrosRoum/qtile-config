@@ -37,12 +37,12 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(),
+                widget.GroupBox(highlight_method='line'),
                 widget.CurrentLayout(),
                 widget.WindowName(),
-                widget.Mpris2(objname="org.mpris.MediaPlayer2.spotify1", display_metadata=["xesam:artist", "xesam:title"]),
+                widget.Mpris2(objname="org.mpris.MediaPlayer2.spotify", display_metadata=["xesam:artist", "xesam:title"]),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
-                widget.PulseVolume(fmt="🔊 {}", limit_max_volume=True),
+                widget.PulseVolume(step=5, fmt="🔊 {}", limit_max_volume=True),
                 widget.Clock(fmt="📆 {}", format="%a, %b %d %Y, %H:%M%p"),
                 widget.Systray(),
                 widget.QuickExit(),
@@ -55,7 +55,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(),
+                widget.GroupBox(highlight_method='line'),
                 widget.CurrentLayout(),
                 widget.WindowName(),
                 # widget.Chord(
@@ -64,9 +64,9 @@ screens = [
                 #     },
                 #     name_transform=lambda name: name.upper(),
                 # ),
-                widget.Mpris2(objname="org.mpris.MediaPlayer2.spotify1", display_metadata=["xesam:artist", "xesam:title"]),
+                widget.Mpris2(objname="org.mpris.MediaPlayer2.spotify", display_metadata=["xesam:artist", "xesam:title"]),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
-                widget.PulseVolume(limit_max_volume=True),
+                widget.PulseVolume(step=5, fmt="🔊 {}", limit_max_volume=True),
                 widget.Clock(fmt="📆 {}", format="%a, %b %d %Y, %H:%M%p"),
                 widget.QuickExit(),
             ],
@@ -87,7 +87,7 @@ mouse = [
         start=lazy.window.get_position(),
     ),
     Drag(
-        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size(), warp_cursor=True
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size(), warp_pointer=True
     ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
