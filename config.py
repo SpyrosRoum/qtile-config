@@ -8,6 +8,7 @@ from libqtile.lazy import lazy
 from modules.common import mod
 from modules.keys import keys
 from modules.groups import groups, group_keys  # noqa
+from modules.lazy_functions import groupbox_toggle_group
 
 keys.extend(group_keys)
 
@@ -37,10 +38,14 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(highlight_method='line'),
+                widget.GroupBox(disable_drag=True, highlight_method='line'),
                 widget.CurrentLayout(),
                 widget.WindowName(),
-                widget.Mpris2(objname="org.mpris.MediaPlayer2.spotify", display_metadata=["xesam:artist", "xesam:title"]),
+                widget.Mpris2(
+                    scroll=False,
+                    objname="org.mpris.MediaPlayer2.spotify",
+                    display_metadata=["xesam:artist", "xesam:title"]
+                ),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
                 widget.PulseVolume(step=5, fmt="🔊 {}", limit_max_volume=True),
                 widget.Clock(fmt="📆 {}", format="%a, %b %d %Y, %H:%M%p"),
@@ -55,7 +60,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(highlight_method='line'),
+                widget.GroupBox(disable_drag=True, highlight_method='line'),
                 widget.CurrentLayout(),
                 widget.WindowName(),
                 # widget.Chord(
@@ -64,7 +69,11 @@ screens = [
                 #     },
                 #     name_transform=lambda name: name.upper(),
                 # ),
-                widget.Mpris2(objname="org.mpris.MediaPlayer2.spotify", display_metadata=["xesam:artist", "xesam:title"]),
+                widget.Mpris2(
+                    scroll=False,
+                    objname="org.mpris.MediaPlayer2.spotify",
+                    display_metadata=["xesam:artist", "xesam:title"]
+                ),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
                 widget.PulseVolume(step=5, fmt="🔊 {}", limit_max_volume=True),
                 widget.Clock(fmt="📆 {}", format="%a, %b %d %Y, %H:%M%p"),
