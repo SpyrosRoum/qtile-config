@@ -45,7 +45,7 @@ screens = [
                     disable_drag=True,
                     highlight_method='line'
                 ),
-                widget.CurrentLayout(),
+                widget.CurrentLayoutIcon(padding=10),
                 widget.WindowName(),
                 widget.Mpris2(
                     scroll=False,
@@ -72,7 +72,7 @@ screens = [
                     disable_drag=True,
                     highlight_method='line'
                 ),
-                widget.CurrentLayout(),
+                widget.CurrentLayoutIcon(padding=10),
                 widget.WindowName(),
                 # widget.Chord(
                 #     chords_colors={
