@@ -1,8 +1,8 @@
 from libqtile import qtile
 from libqtile.core.manager import Qtile
-from libqtile.widget import GroupBox
 from libqtile.group import _Group  # noqa
 from libqtile.lazy import lazy
+from libqtile.widget import GroupBox
 
 from modules.utils import move_window_to_screen, toggle_group
 

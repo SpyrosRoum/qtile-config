@@ -6,9 +6,10 @@ from libqtile.config import Click, Drag, Match, Screen
 from libqtile.lazy import lazy
 
 from modules.common import mod
+from modules.groups import group_keys, groups  # noqa
 from modules.keys import keys
-from modules.groups import groups, group_keys  # noqa
-from modules.lazy_functions import groupbox_toggle_group_box1, groupbox_toggle_group_box2
+from modules.lazy_functions import (groupbox_toggle_group_box1,
+                                    groupbox_toggle_group_box2)
 
 keys.extend(group_keys)
 

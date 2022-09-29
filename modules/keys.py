@@ -1,9 +1,11 @@
 from libqtile.config import Key
-
 from libqtile.lazy import lazy
 
-from modules.lazy_functions import *
 from modules.common import mod, terminal
+from modules.lazy_functions import (move_focus_to_next_screen,
+                                    move_focus_to_prev_screen,
+                                    move_window_to_next_screen,
+                                    move_window_to_prev_screen)
 
 keys = [
     # Switch focus between windows/screens

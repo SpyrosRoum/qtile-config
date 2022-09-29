@@ -1,7 +1,7 @@
 from libqtile.config import Group, Key, KeyChord, Match
 from libqtile.lazy import lazy
 
-from modules.common import mod, host
+from modules.common import host, mod
 
 group_keys = []
 num_groups = [Group(i) for i in "123456789"]
