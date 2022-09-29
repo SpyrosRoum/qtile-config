@@ -36,9 +36,7 @@ app_keychord = KeyChord(
 other_groups.append(
     Group(
         name="Web",
-        exclusive=False,
         spawn="firefox",
-        matches=[Match(wm_class="firefox")],
         init=True,
     )
 )
@@ -71,9 +69,7 @@ if host == "generation":
         -1,
         Group(
             name="Discord",
-            exclusive=True,
             spawn="discord-canary",
-            layout="max",
             matches=[Match(wm_class="discord")],
             init=True,
         )
@@ -82,9 +78,7 @@ if host == "generation":
         -1,
         Group(
             name="Thunderbird",
-            exclusive=True,
             spawn="thunderbird",
-            layout="max",
             matches=[Match(wm_class="thunderbird")],
             init=True,
         )
