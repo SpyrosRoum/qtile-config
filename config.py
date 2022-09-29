@@ -53,8 +53,11 @@ screens = [
                     display_metadata=["xesam:artist", "xesam:title"]
                 ),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
+                widget.Sep(padding=10),
                 widget.PulseVolume(step=5, fmt="🔊 {}", limit_max_volume=True),
+                widget.Sep(padding=10),
                 widget.Clock(fmt="📆 {}", format="%a, %b %d %Y, %H:%M%p"),
+                widget.Sep(padding=10),
                 widget.Systray(),
                 widget.QuickExit(),
             ],
@@ -86,8 +89,11 @@ screens = [
                     display_metadata=["xesam:artist", "xesam:title"]
                 ),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
+                widget.Sep(padding=10),
                 widget.PulseVolume(step=5, fmt="🔊 {}", limit_max_volume=True),
+                widget.Sep(padding=10),
                 widget.Clock(fmt="📆 {}", format="%a, %b %d %Y, %H:%M%p"),
+                widget.Sep(padding=10),
                 widget.QuickExit(),
             ],
             24,
