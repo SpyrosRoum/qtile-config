@@ -8,7 +8,7 @@ from libqtile.lazy import lazy
 from modules.common import mod
 from modules.keys import keys
 from modules.groups import groups, group_keys  # noqa
-from modules.lazy_functions import groupbox_toggle_group
+from modules.lazy_functions import groupbox_toggle_group_box1, groupbox_toggle_group_box2
 
 keys.extend(group_keys)
 
@@ -38,7 +38,12 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(disable_drag=True, highlight_method='line'),
+                widget.GroupBox(
+                    name="box1",
+                    mouse_callbacks={"Button3": groupbox_toggle_group_box1},
+                    disable_drag=True,
+                    highlight_method='line'
+                ),
                 widget.CurrentLayout(),
                 widget.WindowName(),
                 widget.Mpris2(
@@ -60,7 +65,12 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.GroupBox(disable_drag=True, highlight_method='line'),
+                widget.GroupBox(
+                    name="box2",
+                    mouse_callbacks={"Button3": groupbox_toggle_group_box2},
+                    disable_drag=True,
+                    highlight_method='line'
+                ),
                 widget.CurrentLayout(),
                 widget.WindowName(),
                 # widget.Chord(
