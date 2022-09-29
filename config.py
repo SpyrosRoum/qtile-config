@@ -41,6 +41,7 @@ screens = [
             [
                 widget.GroupBox(
                     name="box1",
+                    margin_x=1,
                     mouse_callbacks={"Button3": groupbox_toggle_group_box1},
                     disable_drag=True,
                     highlight_method='line'
@@ -71,6 +72,7 @@ screens = [
             [
                 widget.GroupBox(
                     name="box2",
+                    margin_x=1,
                     mouse_callbacks={"Button3": groupbox_toggle_group_box2},
                     disable_drag=True,
                     highlight_method='line'
