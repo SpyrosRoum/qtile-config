@@ -35,13 +35,6 @@ app_keychord = KeyChord(
 )
 other_groups.append(
     Group(
-        name="Web",
-        spawn="firefox",
-        init=True,
-    )
-)
-other_groups.append(
-    Group(
         name="Music",
         exclusive=False,
         spawn="spotify",
@@ -50,11 +43,6 @@ other_groups.append(
     )
 )
 app_keychord.submappings.extend([
-    Key(
-        [], "w",
-        lazy.group["Web"].toscreen(),
-        desc="Focus Web group",
-    ),
     Key(
         [], "m",
         lazy.group["Music"].toscreen(),
