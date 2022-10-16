@@ -21,8 +21,10 @@ def main(filepath: Path) -> None:
     else:
         is_ok = True
         if len(config.keys) == 0:
+            is_ok = False
             print("Warning: `keys` is empty", file=sys.stderr)
         if len(config.groups) == 0:
+            is_ok = False
             print("Warning: `groups` is empty", file=sys.stderr)
 
         if is_ok:
