@@ -4,7 +4,7 @@ from libqtile.group import _Group  # noqa
 from libqtile.lazy import lazy
 from libqtile.widget import GroupBox
 
-from modules.utils import move_window_to_screen, toggle_group
+from modules.utils import move_window_to_screen, toggle_group, reset_toggled
 
 qtile: Qtile = qtile
 
@@ -55,3 +55,21 @@ def groupbox_toggle_group_box1(group_box: GroupBox):
 def groupbox_toggle_group_box2(group_box: GroupBox):
     clicked_group: _Group = group_box.get_clicked_group()
     toggle_group(qtile, clicked_group)
+
+
+@lazy.widget["box1"].function
+def groupbox_reset_toggling_group_box1(group_box: GroupBox):
+    clicked_group: _Group = group_box.get_clicked_group()
+    if clicked_group == qtile.current_group:
+        reset_toggled(clicked_group)
+    else:
+        group_box.bar.screen.set_group(clicked_group, warp=False)
+
+
+@lazy.widget["box2"].function
+def groupbox_reset_toggling_group_box2(group_box: GroupBox):
+    clicked_group: _Group = group_box.get_clicked_group()
+    if clicked_group == qtile.current_group:
+        reset_toggled(clicked_group)
+    else:
+        group_box.bar.screen.set_group(clicked_group, warp=False)

@@ -9,7 +9,10 @@ from modules.common import mod
 from modules.groups import group_keys, groups  # noqa
 from modules.keys import keys
 from modules.lazy_functions import (groupbox_toggle_group_box1,
-                                    groupbox_toggle_group_box2)
+                                    groupbox_toggle_group_box2,
+                                    groupbox_reset_toggling_group_box1,
+                                    groupbox_reset_toggling_group_box2)
+from modules.hooks import reset_toggling_on_group_change  # noqa
 
 keys.extend(group_keys)
 
@@ -42,7 +45,10 @@ screens = [
                 widget.GroupBox(
                     name="box1",
                     margin_x=1,
-                    mouse_callbacks={"Button3": groupbox_toggle_group_box1},
+                    mouse_callbacks={
+                        "Button1": groupbox_reset_toggling_group_box1,
+                        "Button3": groupbox_toggle_group_box1
+                    },
                     # Setting this to False disables window toggling when clicking on the focused group,
                     # which is a bug but for now I want it (see: https://github.com/qtile/qtile/pull/3901)
                     disable_drag=False,
@@ -76,7 +82,10 @@ screens = [
                 widget.GroupBox(
                     name="box2",
                     margin_x=1,
-                    mouse_callbacks={"Button3": groupbox_toggle_group_box2},
+                    mouse_callbacks={
+                        "Button1": groupbox_reset_toggling_group_box2,
+                        "Button3": groupbox_toggle_group_box2
+                    },
                     disable_drag=False,
                     highlight_method='line',
                     use_mouse_wheel=False,

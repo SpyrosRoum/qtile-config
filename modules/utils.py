@@ -52,6 +52,26 @@ def toggle_group(qtile: Qtile, clicked_group: _Group):
             win.togroup(current_group.name)
 
             if last_length == len(clicked_group.windows):
-                qtile.cmd_spawn(f'notify-send "Qtile Warning: could not toggle group `{clicked_group.name}`"')
+                notify(f'Qtile Warning: could not toggle group `{clicked_group.name}`')
                 break
             last_length = len(clicked_group.windows)
+
+
+def reset_toggled(focused_group: _Group):
+    """
+    Reset all toggling groups
+    """
+    for group, toggling in toggling_groups.items():
+        if toggling:
+            og_windows = group_windows[group]
+            windows_to_send_back = [win for win in focused_group.windows if win in og_windows]
+            for win in reversed(windows_to_send_back):
+                win.togroup(group, switch_group=False)
+
+            group_windows[group] = []
+            toggling_groups[group] = False
+
+
+def notify(txt: str):
+    from libqtile import qtile
+    qtile.cmd_spawn(f'notify-send "{txt}"')
