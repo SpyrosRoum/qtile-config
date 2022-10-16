@@ -44,7 +44,8 @@ screens = [
                     margin_x=1,
                     mouse_callbacks={"Button3": groupbox_toggle_group_box1},
                     disable_drag=True,
-                    highlight_method='line'
+                    highlight_method='line',
+                    use_mouse_wheel=False,
                 ),
                 widget.CurrentLayoutIcon(padding=10),
                 widget.WindowName(),
@@ -75,7 +76,8 @@ screens = [
                     margin_x=1,
                     mouse_callbacks={"Button3": groupbox_toggle_group_box2},
                     disable_drag=True,
-                    highlight_method='line'
+                    highlight_method='line',
+                    use_mouse_wheel=False,
                 ),
                 widget.CurrentLayoutIcon(padding=10),
                 widget.WindowName(),
