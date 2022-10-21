@@ -12,6 +12,9 @@ class TogglingState:
         self.toggling_groups: dict[str, bool] = {}
         # A group => windows mapping to remember where a window came from when toggling its group
         self.group_windows: dict[str, list[Window]] = {}
+        # On the groupset hook we need to ignore the event if it came from changing screens.
+        # The best way to do this right now is to set this var to True on the `current_screen_change` hook.
+        self.changed_screen: bool = False
 
         self.qtile = qtile
 
