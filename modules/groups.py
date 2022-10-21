@@ -28,11 +28,7 @@ for group in num_groups:
     )
 
 
-app_keychord = KeyChord(
-    [mod],
-    "space",
-    []
-)
+app_keychord = KeyChord([mod], "space", [])
 other_groups.append(
     Group(
         name="Music",
@@ -42,13 +38,16 @@ other_groups.append(
         init=True,
     )
 )
-app_keychord.submappings.extend([
-    Key(
-        [], "m",
-        lazy.group["Music"].toscreen(),
-        desc="Focus Music group",
-    ),
-])
+app_keychord.submappings.extend(
+    [
+        Key(
+            [],
+            "m",
+            lazy.group["Music"].toscreen(),
+            desc="Focus Music group",
+        ),
+    ]
+)
 
 
 if host == "generation":
@@ -60,7 +59,7 @@ if host == "generation":
             spawn="discord-canary",
             matches=[Match(wm_class="discord")],
             init=True,
-        )
+        ),
     )
     other_groups.insert(
         -1,
@@ -69,20 +68,24 @@ if host == "generation":
             spawn="thunderbird",
             matches=[Match(wm_class="thunderbird")],
             init=True,
-        )
+        ),
     )
-    app_keychord.submappings.extend([
-        Key(
-            [], "d",
-            lazy.group["Discord"].toscreen(),
-            desc="Focus Discord group",
-        ),
-        Key(
-            [], "t",
-            lazy.group["Thunderbird"].toscreen(),
-            desc="Focus Thunderbird group",
-        ),
-    ])
+    app_keychord.submappings.extend(
+        [
+            Key(
+                [],
+                "d",
+                lazy.group["Discord"].toscreen(),
+                desc="Focus Discord group",
+            ),
+            Key(
+                [],
+                "t",
+                lazy.group["Thunderbird"].toscreen(),
+                desc="Focus Thunderbird group",
+            ),
+        ]
+    )
 
 group_keys.append(app_keychord)
 

@@ -14,4 +14,5 @@ def move_window_to_screen(qtile: Qtile, window: Window, screen: Screen):
 
 def notify(txt: str):
     from libqtile import qtile
+
     qtile.cmd_spawn(f'notify-send "{txt}"')

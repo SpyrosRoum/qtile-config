@@ -18,11 +18,13 @@ layout_theme = {
     "border_width": 2,
     "margin": 4,
     "border_focus": "e1acff",
-    "border_normal": "1D2330"
+    "border_normal": "1D2330",
 }
 
 layouts = [
-    layout.MonadTall(single_border_width=0, new_client_position="top", single_margin=0, **layout_theme),
+    layout.MonadTall(
+        single_border_width=0, new_client_position="top", single_margin=0, **layout_theme
+    ),
     layout.Floating(**layout_theme),
     layout.Max(margin=0, border_width=0),
 ]
@@ -49,7 +51,7 @@ screens = [
                     # Setting this to False disables window toggling when clicking on the focused group,
                     # which is a bug but for now I want it (see: https://github.com/qtile/qtile/pull/3901)
                     disable_drag=False,
-                    highlight_method='line',
+                    highlight_method="line",
                     use_mouse_wheel=False,
                 ),
                 widget.CurrentLayoutIcon(padding=10),
@@ -57,7 +59,7 @@ screens = [
                 widget.Mpris2(
                     scroll=False,
                     objname="org.mpris.MediaPlayer2.spotify",
-                    display_metadata=["xesam:artist", "xesam:title"]
+                    display_metadata=["xesam:artist", "xesam:title"],
                 ),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
                 widget.Sep(padding=10),
@@ -82,7 +84,7 @@ screens = [
                         "Button3": lazy.widget["box2"].function(groupbox_toggle_group),
                     },
                     disable_drag=False,
-                    highlight_method='line',
+                    highlight_method="line",
                     use_mouse_wheel=False,
                 ),
                 widget.CurrentLayoutIcon(padding=10),
@@ -90,7 +92,7 @@ screens = [
                 widget.Mpris2(
                     scroll=False,
                     objname="org.mpris.MediaPlayer2.spotify",
-                    display_metadata=["xesam:artist", "xesam:title"]
+                    display_metadata=["xesam:artist", "xesam:title"],
                 ),
                 widget.Memory(fmt="🧠 {}", measure_mem="G"),
                 widget.Sep(padding=10),
@@ -115,8 +117,8 @@ mouse = [
         start=lazy.window.get_position(),
     ),
     Drag(
-        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()  # , warp_pointer=True
-    ),
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),  # , warp_pointer=True
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 

@@ -28,7 +28,9 @@ class TogglingState:
             # Send proper windows back to clicked_group
             original_windows = self.group_windows[group.name]
             # We need to filter out any deleted windows
-            windows_to_send_back = [win for win in current_group.windows if win in original_windows]
+            windows_to_send_back = [
+                win for win in current_group.windows if win in original_windows
+            ]
             # `reversed` works with `clicked_group.windows[-1]` bellow to keep ordering at least
             # when returning windows to their og group
             for win in reversed(windows_to_send_back):
@@ -49,7 +51,7 @@ class TogglingState:
                 win.togroup(current_group.name)
 
                 if last_length == len(group.windows):
-                    notify(f'Qtile Warning: could not toggle group `{group.name}`')
+                    notify(f"Qtile Warning: could not toggle group `{group.name}`")
                     break
                 last_length = len(group.windows)
 
