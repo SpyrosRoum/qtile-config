@@ -8,10 +8,7 @@ from libqtile.lazy import lazy
 from modules.common import mod
 from modules.groups import group_keys, groups  # noqa
 from modules.keys import keys
-from modules.lazy_functions import (groupbox_toggle_group_box1,
-                                    groupbox_toggle_group_box2,
-                                    groupbox_reset_toggling_group_box1,
-                                    groupbox_reset_toggling_group_box2)
+from modules.lazy_functions import groupbox_toggle_group, groupbox_reset_toggling_group
 from modules.hooks import reset_toggling_on_group_change  # noqa
 
 keys.extend(group_keys)
@@ -46,8 +43,8 @@ screens = [
                     name="box1",
                     margin_x=1,
                     mouse_callbacks={
-                        "Button1": groupbox_reset_toggling_group_box1,
-                        "Button3": groupbox_toggle_group_box1
+                        "Button1": lazy.widget["box1"].function(groupbox_reset_toggling_group),
+                        "Button3": lazy.widget["box1"].function(groupbox_toggle_group),
                     },
                     # Setting this to False disables window toggling when clicking on the focused group,
                     # which is a bug but for now I want it (see: https://github.com/qtile/qtile/pull/3901)
@@ -72,8 +69,6 @@ screens = [
                 widget.QuickExit(),
             ],
             24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
     Screen(
@@ -83,8 +78,8 @@ screens = [
                     name="box2",
                     margin_x=1,
                     mouse_callbacks={
-                        "Button1": groupbox_reset_toggling_group_box2,
-                        "Button3": groupbox_toggle_group_box2
+                        "Button1": lazy.widget["box2"].function(groupbox_reset_toggling_group),
+                        "Button3": lazy.widget["box2"].function(groupbox_toggle_group),
                     },
                     disable_drag=False,
                     highlight_method='line',
@@ -92,12 +87,6 @@ screens = [
                 ),
                 widget.CurrentLayoutIcon(padding=10),
                 widget.WindowName(),
-                # widget.Chord(
-                #     chords_colors={
-                #         "launch": ("#ff0000", "#ffffff"),
-                #     },
-                #     name_transform=lambda name: name.upper(),
-                # ),
                 widget.Mpris2(
                     scroll=False,
                     objname="org.mpris.MediaPlayer2.spotify",
@@ -112,8 +101,6 @@ screens = [
                 widget.QuickExit(),
             ],
             24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
 ]

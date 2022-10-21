@@ -46,29 +46,12 @@ def move_focus_to_next_screen(_):
     qtile.focus_screen(qtile.screens[index].index)
 
 
-@lazy.widget["box1"].function
-def groupbox_toggle_group_box1(group_box: GroupBox):
+def groupbox_toggle_group(group_box: GroupBox):
     clicked_group: _Group = group_box.get_clicked_group()
     toggling_state.toggle_group(clicked_group)
 
 
-@lazy.widget["box2"].function
-def groupbox_toggle_group_box2(group_box: GroupBox):
-    clicked_group: _Group = group_box.get_clicked_group()
-    toggling_state.toggle_group(clicked_group)
-
-
-@lazy.widget["box1"].function
-def groupbox_reset_toggling_group_box1(group_box: GroupBox):
-    clicked_group: _Group = group_box.get_clicked_group()
-    if clicked_group == qtile.current_group:
-        toggling_state.reset_toggled(clicked_group)
-    else:
-        group_box.bar.screen.set_group(clicked_group, warp=False)
-
-
-@lazy.widget["box2"].function
-def groupbox_reset_toggling_group_box2(group_box: GroupBox):
+def groupbox_reset_toggling_group(group_box: GroupBox):
     clicked_group: _Group = group_box.get_clicked_group()
     if clicked_group == qtile.current_group:
         toggling_state.reset_toggled(clicked_group)
