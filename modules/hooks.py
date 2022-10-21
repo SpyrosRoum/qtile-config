@@ -25,4 +25,9 @@ def reset_toggling_on_group_change():
         return
 
     prev_group = qtile.current_screen.previous_group
+
+    if prev_group is None:
+        # On start-up this is None
+        return
+
     toggling_state.reset_toggled(prev_group)
