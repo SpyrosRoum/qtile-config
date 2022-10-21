@@ -5,3 +5,6 @@ default:
 
 check:
     python ./checker.py ./config.py
+
+fmt:
+    black -l 99 ./
