@@ -2,6 +2,8 @@ from libqtile.config import Group, Key, KeyChord, Match
 from libqtile.lazy import lazy
 
 from modules.common import host, mod
+from modules.state import toggling_state
+
 
 group_keys = []
 num_groups = [Group(i) for i in "123456789"]
@@ -23,6 +25,15 @@ for group in num_groups:
                 group.name,
                 lazy.window.togroup(group.name),
                 desc=f"move focused window to group {group.name}",
+            ),
+            # mod + ctrl + group = toggle pressed group
+            Key(
+                [mod, "control"],
+                group.name,
+                lazy.group[group.name].function(
+                    lambda pressed_group: toggling_state.toggle_group(pressed_group)
+                ),
+                desc=f"Toggle group {group.name}",
             ),
         ]
     )
